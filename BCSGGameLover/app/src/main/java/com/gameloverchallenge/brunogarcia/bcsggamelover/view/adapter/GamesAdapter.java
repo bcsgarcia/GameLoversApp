@@ -32,11 +32,9 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHol
     private Context mContext;
     private List<Game> mListGame;
     private LayoutInflater mLayoutInflater;
-
     private String TAG = "GamesAdapter";
     private RecyclerViewOnClickListenerHack mRecyclerViewOnClickListenerHack;
     private int mColor;
-
 
     public GamesAdapter(Context ctx, List<Game> listGame, int color) {
         mContext = ctx;
@@ -47,7 +45,6 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHol
 
     @Override
     public GamesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //util.logMensagem(CATEGORIA, "onCreateViewHolder()");
         View v = mLayoutInflater.inflate(R.layout.item_list_game, parent, false);
         GamesViewHolder mvh = new GamesViewHolder(v);
         return mvh;
@@ -55,7 +52,6 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHol
 
     @Override
     public void onBindViewHolder(GamesViewHolder viewHolder, int position) {
-
         viewHolder.txtName.setText(mListGame.get(position).getName());
         if (mListGame.get(position).getCover() != null &&  !mListGame.get(position).getCover().equals("") ) {
             try {
@@ -72,19 +68,13 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHol
 
                 Uri uri = Uri.parse("https:" + mListGame.get(position).getCover().replace("t_thumb", "t_cover_big_2x"));
                 viewHolder.imgCover.setImageURI(uri);
-
-               // viewHolder.imgCover.setMaxWidth(mListGame.get(position).getWidth());
-
             } catch (Exception e){
                 e.getStackTrace();
             }
 
         }
 
-        //Random rnd = new Random();
-        //int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
         viewHolder.rlCard.setBackgroundColor(mColor);
-
 
         try {
             YoYo.with(Techniques.Landing).duration(700).playOn(viewHolder.itemView);
@@ -93,16 +83,14 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHol
         }
     }
 
-    public void addListItem(Game item, int position) {
-
-        mListGame.add(item);
-        notifyItemInserted(position);
-
-    }
-
     @Override
     public int getItemCount() {
         return mListGame.size();
+    }
+
+    public void addListItem(Game item, int position) {
+        mListGame.add(item);
+        notifyItemInserted(position);
     }
 
     public void setRecyclerViewOnClickListenerHack(RecyclerViewOnClickListenerHack r){ mRecyclerViewOnClickListenerHack = r; }
@@ -127,7 +115,6 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.GamesViewHol
 
         @Override
         public void onClick(View view) {
-            Log.d(TAG,"TESTE ADAPTER CLICK");
             if(mRecyclerViewOnClickListenerHack != null){
                 mRecyclerViewOnClickListenerHack.onClickListener(view, getLayoutPosition());
             }

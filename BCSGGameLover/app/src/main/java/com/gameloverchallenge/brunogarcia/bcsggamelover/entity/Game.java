@@ -27,19 +27,19 @@ public class Game implements Serializable {
     public Game(JSONObject jsonObject){
 
         try {
-            this.id = Long.parseLong(jsonObject.getString("id"));
+            setId(Long.parseLong(jsonObject.getString("id")));
         } catch (JSONException e){
             Log.e(TAG, "Erro carregar ID: " + e.getMessage());
         }
 
         try {
-            this.name = jsonObject.getString("name");
+            setName(jsonObject.getString("name"));
         } catch (JSONException e){
             Log.e(TAG, "Erro carregar NAME: " + e.getMessage());
         }
 
         try {
-            this.summary = jsonObject.getString("summary");
+            setSummary(jsonObject.getString("summary"));
         } catch (JSONException e){
             Log.e(TAG, "Erro carregar SUMMARY: " + e.getMessage());
         }
@@ -67,9 +67,9 @@ public class Game implements Serializable {
         }
 
         try {
-            this.cover = jsonObject.getJSONObject("cover").getString("url");
-            this.width = Long.parseLong(jsonObject.getJSONObject("cover").getString("width"));
-            this.height = Long.parseLong(jsonObject.getJSONObject("cover").getString("height"));
+            setCover(jsonObject.getJSONObject("cover").getString("url"));
+            setWidth(Long.parseLong(jsonObject.getJSONObject("cover").getString("width")));
+            setHeight(Long.parseLong(jsonObject.getJSONObject("cover").getString("height")));
         } catch (JSONException e) {
             Log.e(TAG, "Erro carregar COVER: " + e.getMessage());
         }

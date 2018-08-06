@@ -3,7 +3,6 @@ package com.gameloverchallenge.brunogarcia.bcsggamelover.view.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.gameloverchallenge.brunogarcia.bcsggamelover.R;
@@ -17,26 +16,13 @@ public class MainAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Fresco.initialize(this);
-
-
-
-        new Thread(new Runnable() {
-            public void run() {
-
+        new Thread(() -> {
                 CacheData.getInstance(getBaseContext()).populateListPlatforms();
-                while (CacheData.getInstance(getBaseContext()).getListPlatforms().size() == 0){
-                    //Log.d(TAG, "waiting...");
-                }
-
+                while (CacheData.getInstance(getBaseContext()).getListPlatforms().size() == 0){  }
                 Intent intent = new Intent(MainAct.this, PlatformAct.class);
                 startActivity(intent);
-
                 MainAct.this.finish();
-
-            }
         }).start();
-
     }
 }

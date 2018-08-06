@@ -19,14 +19,12 @@ import org.json.JSONArray;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class NetworkController {
 
     private static final String TAG = NetworkController.class.getSimpleName();
 
     private RequestQueue mRequestQueue;
     private static Context mCtx;
-
     private static NetworkController mInstance;
 
     public static synchronized NetworkController getInstance(Context ctx) {
@@ -62,26 +60,17 @@ public class NetworkController {
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest (Request.Method.GET,
                 Helper.getResourceByName(mCtx,"api_url") + endpoint,
                 null,
-                new Response.Listener<JSONArray>() {
+                (JSONArray response) -> callback.onSuccess(response),
+                (VolleyError error) -> VolleyLog.d(TAG, "Error: " + error.getMessage()) )
+                {
                     @Override
-                    public void onResponse(JSONArray response) {
-                        //Log.d(TAG, response.toString());
-                        callback.onSuccess(response);
+                    public Map<String, String> getHeaders() {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("user-key", Helper.getResourceByName(mCtx,"api_key"));
+                        params.put("Access", "application/json");
+                        return params;
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-            }
-        }){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("user-key", Helper.getResourceByName(mCtx,"api_key"));
-                params.put("Access", "application/json");
-                return params;
-            }
-        };
+                };
 
         NetworkController.getInstance(mCtx).addToRequestQueue(jsonObjectRequest);
     }

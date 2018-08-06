@@ -21,7 +21,6 @@ import java.util.List;
 public class Platform implements Serializable {
 
     private final String TAG = "Platform";
-
     private Long id;
     private String name;
     private List<Long> games;
