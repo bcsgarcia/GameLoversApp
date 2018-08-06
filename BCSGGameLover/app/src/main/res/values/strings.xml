@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BCSGGameLover</string>
+    <string name="api_key">2463d65a867ce55f1a38dd527a2e180f</string>
+    <string name="api_url">"https://api-endpoint.igdb.com/"</string>
+
+    <string name="title_activity_platform">PlatformAct</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_tab_test">TabTestAct</string>
+    <string name="title_activity_game_detail">GameDetailAct</string>
+</resources>

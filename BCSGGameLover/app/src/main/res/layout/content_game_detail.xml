@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/llView"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.activity.GameDetailAct"
+    tools:showIn="@layout/activity_game_detail">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imgCover"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                fresco:actualImageScaleType="fitCenter"
+                fresco:placeholderImage="@drawable/game"
+                fresco:progressBarAutoRotateInterval="1000"
+                fresco:progressBarImage="@drawable/loading"
+                fresco:progressBarImageScaleType="centerInside" />
+
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Game Name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgCover" />
+
+
+            <TextView
+                android:id="@+id/txtGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Genre: "
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtName" />
+
+            <TextView
+                android:id="@+id/txtPlatform"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Platform: "
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtGenre" />
+
+
+            <View
+                android:id="@+id/vDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/md_grey_500"
+                app:layout_constraintTop_toBottomOf="@+id/txtPlatform"
+                ></View>
+
+            <TextView
+                android:id="@+id/txtSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Summary: aAAAAAAAAaAAAAAA AAaAAAAAAAAaAAAAA AAAaAAAAAAAAaAA AAAAAAaAAAAAAAAaAAAA AAAAaAAAAAAAAaAA AAAAAAaAAA AAAAAaAAAAAAAAaAAA AAAAAaAAAAAAAAa AAAAAAAAaAAAAAAA AaAAAAAAAAaAAAAAAA AaAAAAAAAAaAAAA AAAAaAAAAAAAAaAAAAAAAAa AAAAAAAAaAAAAAAAAaAA AAAAAAaAAAAAAAAa AAAAAAAAaAAAAAAAA aAAAAAAAAaAAAAAAAAa AAAAAAAAaAAAAAAA AaAAAAAAAAaAA AAAAAAaAAAAAAA AaAAAAAAAAaAAAAAAA AaAAAAAAAAa AAAAAAAAaA AAAAAAAaAAAAAAAAaA AAAAAAA"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vDivider"
+
+                />
+
+
+
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>
